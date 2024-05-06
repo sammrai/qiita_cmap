@@ -26,7 +26,12 @@ jobs:
         run: npm install -g @qiita/qiita-cli@v1.4.1
         shell: bash
       - name: Publish articles
-        run: qiita publish README
+        run: |
+          npm install @qiita/qiita-cli --save-dev
+          npx qiita version
+          npm install @qiita/qiita-cli@latest
+          npx qiita init
+          npx qiita publish README
         env:
           QIITA_TOKEN: ${{ secrets.QIITA_ACCESS_TOKEN }}
         shell: bash
