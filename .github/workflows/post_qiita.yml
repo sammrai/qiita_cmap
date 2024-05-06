@@ -19,10 +19,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          fetch-depth: 0
-      - uses: increments/qiita-cli/actions/publish@v1
-        with:
-          qiita-token: ${{ secrets.QIITA_ACCESS_TOKEN }}
-          root: "."
+          node-version: "18.16.0"
+      - name: Install qiita-cli
+        run: npm install -g @qiita/qiita-cli@v1.4.1
+        shell: bash
+      - name: Publish articles
+        run: qiita publish README
+        env:
+          QIITA_TOKEN: ${{ secrets.QIITA_ACCESS_TOKEN }}
+        shell: bash
