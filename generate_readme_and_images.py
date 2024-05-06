@@ -6,6 +6,7 @@ import os
 
 # 利用可能なカラーマップを取得
 cmaps = plt.colormaps()
+cmaps.sort()
 
 # データの生成
 xs = np.arange(1, 10)
