@@ -1,0 +1,12 @@
+version: '3'
+services:
+  qiita:
+    container_name: qiita
+    build: .
+    ports:
+      - 8890:8888
+    volumes:
+      - ./:/qiita/public/
+    environment:
+      TZ: Asia/Tokyo
+    tty: true
