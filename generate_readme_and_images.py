@@ -28,8 +28,14 @@ with open('README.md', 'w') as readme:
     
     for cmap in cmaps:
         # ヒートマップを生成し、画像として保存
-        plt.figure(figsize=(5, 4))
-        sns.heatmap(df, cmap=cmap)
+        plt.figure(figsize=(5, 3))
+        ax = sns.heatmap(df, cmap=cmap)
+        ax.tick_params(axis='both', which='both', length=0)
+        ax.set_xticklabels([])
+        ax.set_yticklabels([])
+        ax.set_xlabel('')
+        ax.set_ylabel('')
+        plt.tight_layout(pad=0.1)
         plt.savefig(f'images/{cmap}.png',transparent=True)
         plt.close()
 
