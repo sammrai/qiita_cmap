@@ -31,7 +31,5 @@ jobs:
           npx qiita version
           npm install @qiita/qiita-cli@latest
           npx qiita init
-          npx qiita publish README
-        env:
-          QIITA_TOKEN: ${{ secrets.QIITA_ACCESS_TOKEN }}
+          QIITA_TOKEN=${{ secrets.QIITA_ACCESS_TOKEN }} npx qiita publish README
         shell: bash
