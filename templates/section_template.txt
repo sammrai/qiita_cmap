@@ -1,3 +1,8 @@
 ## {cmap_name}
+
+```python
+sns.heatmap(df, cmap='BrBG')
+```
+
 ![](https://raw.githubusercontent.com/sammrai/qiita_cmap/main/images/{cmap_name}.png)
 

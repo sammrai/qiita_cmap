@@ -28,11 +28,10 @@ with open('README.md', 'w') as readme:
     
     for cmap in cmaps:
         # ヒートマップを生成し、画像として保存
-        if not os.path.exists(f'images/{cmap}.png'):
-            plt.figure(figsize=(10, 8))
-            sns.heatmap(df, cmap=cmap)
-            plt.savefig(f'images/{cmap}.png')
-            plt.close()
+        plt.figure(figsize=(5, 4))
+        sns.heatmap(df, cmap=cmap)
+        plt.savefig(f'images/{cmap}.png',transparent=True)
+        plt.close()
 
         # READMEにセクションを追加
         section_content = section_template.format(cmap_name=cmap)
