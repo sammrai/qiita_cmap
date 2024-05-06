@@ -1,7 +1,7 @@
 ## {cmap_name}
 
 ```python
-sns.heatmap(df, cmap='BrBG')
+sns.heatmap(df, cmap='{cmap_name}')
 ```
 
 ![](https://raw.githubusercontent.com/sammrai/qiita_cmap/main/images/{cmap_name}.png)
