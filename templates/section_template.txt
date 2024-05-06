@@ -1,0 +1,4 @@
+## {cmap_name}
+![](./images/{cmap_name}.png)
+##
+
