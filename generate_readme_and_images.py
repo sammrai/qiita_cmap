@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 import numpy as np
+import os
 
 # 利用可能なカラーマップを取得
 cmaps = plt.colormaps()
@@ -27,11 +28,12 @@ with open('README.md', 'w') as readme:
     
     for cmap in cmaps:
         # ヒートマップを生成し、画像として保存
-        plt.figure(figsize=(10, 8))
-        sns.heatmap(df, cmap=cmap)
-        plt.savefig(f'images/{cmap}.png')
-        plt.close()
-        
+        if not os.path.exists(f'images/{cmap}.png'):
+            plt.figure(figsize=(10, 8))
+            sns.heatmap(df, cmap=cmap)
+            plt.savefig(f'images/{cmap}.png')
+            plt.close()
+
         # READMEにセクションを追加
         section_content = section_template.format(cmap_name=cmap)
         readme.write(section_content)
