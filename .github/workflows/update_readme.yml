@@ -1,0 +1,38 @@
+name: Update README and Images
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  update-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      
+      - name: Install dependencies
+        run: |
+          pip install matplotlib seaborn pandas numpy
+
+      - name: Run script to generate README and images
+        run: python generate_readme_and_images.py
+      
+      - name: Auto Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update README and images
+      
+      - name: Create Pull Request
+        uses: repo-sync/pull-request@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_branch: "update-readme-images"
+          destination_branch: "main"
+          pr_title: "Update README and Images"
+          pr_body: "Automated update of README and image files"
+          pr_label: "automated pr"
